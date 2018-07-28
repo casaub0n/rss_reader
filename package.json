@@ -1,0 +1,8 @@
+{
+  "name": "react-rss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:casaub0n/react-rss.git",
+  "author": "Casaubon <netzach.yoshida@gmail.com>",
+  "license": "MIT"
+}
