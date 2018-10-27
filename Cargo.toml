@@ -1,0 +1,6 @@
+[package]
+name = "react-rss"
+version = "0.1.0"
+authors = ["Casaubon <netzach.yoshida@gmail.com>"]
+
+[dependencies]
