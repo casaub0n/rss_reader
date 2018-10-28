@@ -1,5 +1,5 @@
 [package]
-name = "react-rss"
+name = "rss_reader"
 version = "0.1.0"
 authors = ["Casaubon <netzach.yoshida@gmail.com>"]
 
