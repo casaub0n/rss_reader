@@ -11,4 +11,4 @@ notifications:
   email: false
 
 script:
-  - yarn run test:ci
+  - cd src/front && yarn run test:ci
