@@ -4,11 +4,18 @@ module.exports = {
   mode: "development",
   plugins: [
     new HTMLPlugin({
-      template: "src/index.html"
+      template: "src/index.html",
+      title: 'My App',
+      path: __dirname + '/public',
+      filename: 'index.html'
     })
   ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
+  },
+  output: {
+    path: __dirname + '/public',
+    filename: 'public.js'
   },
   module: {
     rules: [
