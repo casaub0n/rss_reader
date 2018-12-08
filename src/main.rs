@@ -1,24 +1,28 @@
-extern crate hyper;
+extern crate actix;
+extern crate actix_web;
+extern crate env_logger;
 
-use hyper::{Body, Response, Server};
-use hyper::rt::Future;
-use hyper::service::service_fn_ok;
-
-static TEXT: &str = "Hello, World!";
+use actix_web::{fs, middleware, server, App};
 
 fn main() {
-        let addr = ([127, 0, 0, 1], 3000).into();
+    ::std::env::set_var("RUST_LOG", "actix_web=info");
+    ::std::env::set_var("RUST_BACKTRACE", "1");
+    env_logger::init();
 
-            let new_svc = || {
-                        service_fn_ok(|_req|{
-                                        Response::new(Body::from(TEXT))
-                                                    })
-                            };
+    let sys = actix::System::new("static_index");
 
-                let server = Server::bind(&addr)
-                            .serve(new_svc)
-                                    .map_err(|e| eprintln!("server error: {}", e));
+    server::new(|| {
+        App::new()
+	        // enable logger
+	        .middleware(middleware::Logger::default())
+	        .handler(
+                "/",
+                fs::StaticFiles::new("./src/front/public/").unwrap().index_file("index.html")
+            )
+    }).bind("127.0.0.1:10000")
+        .expect("Can not start server on given IP/Port")
+        .start();
 
-                    hyper::rt::run(server);
+    println!("Started http server: 127.0.0.1:10000");
+    let _ = sys.run();
 }
-
