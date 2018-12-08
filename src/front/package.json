@@ -6,6 +6,7 @@
   "author": "Casaubon <netzach.yoshida@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "NODE_ENV=production webpack",
     "watch": "webpack-serve --port 10000",
     "lint": "tslint src/**.ts src/**.tsx",
     "test:jest": "jest",
